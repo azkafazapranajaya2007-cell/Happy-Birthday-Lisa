@@ -209,7 +209,7 @@
                 </div>
             </div>
 
-            <!-- Letter Trigger Utama (Surat Ulang Tahun) -->
+            <!-- Letter Trigger -->
             <div class="w-full glass-card rounded-3xl p-6 text-center border border-white/80 shadow-xl relative">
                 <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 rounded-2xl bg-rose-500 text-white flex items-center justify-center text-xl shadow-md flex-shrink-0">
@@ -242,8 +242,8 @@
                         <!-- Photo Card 1 -->
                         <div class="w-full flex-shrink-0 p-1">
                             <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center">
-                                <div class="w-full h-80 sm:h-[360px] rounded-lg overflow-hidden bg-rose-50/50 flex items-center justify-center relative">
-                                    <img src="assets/img/lisa1.jpeg" alt="Lisa Memory 1" class="w-full h-full object-contain">
+                                <div class="w-full h-80 sm:h-[380px] rounded-lg overflow-hidden bg-slate-100 relative shadow-inner">
+                                    <img src="assets/img/lisa1.jpeg" alt="Lisa Memory 1" class="w-full h-full object-cover object-top">
                                 </div>
                                 <p class="font-handwriting text-xl text-slate-700 mt-3 font-semibold">Keep smiling and shine bright ✨</p>
                             </div>
@@ -252,8 +252,8 @@
                         <!-- Photo Card 2 -->
                         <div class="w-full flex-shrink-0 p-1">
                             <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center">
-                                <div class="w-full h-80 sm:h-[360px] rounded-lg overflow-hidden bg-rose-50/50 flex items-center justify-center relative">
-                                    <img src="assets/img/lisa2.jpeg" alt="Lisa Memory 2" class="w-full h-full object-contain">
+                                <div class="w-full h-80 sm:h-[380px] rounded-lg overflow-hidden bg-slate-100 relative shadow-inner">
+                                    <img src="assets/img/lisa2.jpeg" alt="Lisa Memory 2" class="w-full h-full object-cover object-top">
                                 </div>
                                 <p class="font-handwriting text-xl text-slate-700 mt-3 font-semibold">Semoga harimu selalu hangat 🌸</p>
                             </div>
@@ -262,8 +262,8 @@
                         <!-- Photo Card 3 -->
                         <div class="w-full flex-shrink-0 p-1">
                             <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center">
-                                <div class="w-full h-80 sm:h-[360px] rounded-lg overflow-hidden bg-rose-50/50 flex items-center justify-center relative">
-                                    <img src="assets/img/lisa3.jpeg" alt="Lisa Memory 3" class="w-full h-full object-contain">
+                                <div class="w-full h-80 sm:h-[380px] rounded-lg overflow-hidden bg-slate-100 relative shadow-inner">
+                                    <img src="assets/img/lisa3.jpeg" alt="Lisa Memory 3" class="w-full h-full object-cover object-top">
                                 </div>
                                 <p class="font-handwriting text-xl text-slate-700 mt-3 font-semibold">Bahagia terus ya di usia baru! 🎉</p>
                             </div>
@@ -286,7 +286,7 @@
                 </div>
             </div>
 
-            <!-- SETUP TERAKHIR INTERAKTIF: SURAT KEMBALI KEPADA PEMILIKNYA (DIBIKIN TOMBOL / AMPLOP DULU) -->
+            <!-- SETUP TERAKHIR INTERAKTIF: SURAT KEMBALI KEPADA PEMILIKNYA -->
             <div class="w-full glass-card rounded-3xl p-6 border border-rose-200/80 shadow-xl relative text-left">
                 <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl shadow-md flex-shrink-0">
@@ -342,7 +342,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2: SURAT YANG AKHIRNYA KEMBALI KEPADA PEMILIKNYA (PERMINTAAN MAAF) -->
+    <!-- MODAL 2: SURAT YANG AKHIRNYA KEMBALI KEPADA PEMILIKNYA -->
     <div id="apology-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
         <div class="glass-card w-full max-w-md rounded-3xl p-6 md:p-8 bg-white/95 border border-white shadow-2xl transform scale-90 transition-all duration-300 relative overflow-hidden max-h-[85vh] flex flex-col">
             <button onclick="closeApologyModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center text-xs transition">
@@ -363,7 +363,7 @@
                     Aku tahu tidak ada kata maaf yang bisa mengulang waktu atau menghapus kesalahan yang pernah kubuat di masa lalu. Aku benar-benar menyesal atas setiap kebodohan, ego, dan kesalahan yang pernah menyakiti hatimu atau membuat keadaan menjadi buruk.
                 </p>
                 <p>
-                    Ribuan kata maaf mungkin tidak akan pernah cukup untuk menebus semuanya. Namun hari ini, dengan kerendahan hati yang paling dalam, aku ingin meminta maaf setulus-tulusnya. Terima kasih karena telah bertahan, dan semoga seiring bertambahnya usiamu, pintu maaf itu perlahan bisa terbuka.
+                    Ribuan kata maaf mungkin tidak akan pernah cukup untuk menebus semuanya. Namun hari ini, dengan kerendahan hati yang paling dalam, aku ingin meminta maaf selulus-lulusnya. Terima kasih karena telah bertahan, dan semoga seiring bertambahnya usiamu, pintu maaf itu perlahan bisa terbuka.
                 </p>
                 <div class="pt-4 text-right">
                     <p class="text-xs text-slate-400">Dengan tulus,</p>
@@ -483,7 +483,7 @@
         function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }
         function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); }
 
-        /* CONTROLLER MODAL SURAT 1 (UCAPAN ULANG TAHUN) */
+        /* MODAL SURAT 1 */
         function openLetterModal() {
             const modal = document.getElementById('letter-modal');
             modal.classList.remove('pointer-events-none', 'opacity-0');
@@ -498,7 +498,7 @@
             modal.classList.add('opacity-0', 'pointer-events-none');
         }
 
-        /* CONTROLLER MODAL SURAT 2 (SURAT KEMBALI KEPADA PEMILIKNYA) */
+        /* MODAL SURAT 2 */
         function openApologyModal() {
             const modal = document.getElementById('apology-modal');
             modal.classList.remove('pointer-events-none', 'opacity-0');
