@@ -209,7 +209,7 @@
                 </div>
             </div>
 
-            <!-- Letter Trigger -->
+            <!-- Letter Trigger Utama (Surat Ulang Tahun) -->
             <div class="w-full glass-card rounded-3xl p-6 text-center border border-white/80 shadow-xl relative">
                 <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 rounded-2xl bg-rose-500 text-white flex items-center justify-center text-xl shadow-md flex-shrink-0">
@@ -286,33 +286,21 @@
                 </div>
             </div>
 
-            <!-- SETUP TERAKHIR: Surat yang akhirnya kembali kepada pemiliknya -->
-            <div class="w-full glass-card rounded-3xl p-6 md:p-8 border border-rose-200 shadow-xl space-y-4 text-left">
-                <div class="flex items-center space-x-3 pb-3 border-b border-rose-100">
-                    <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg flex-shrink-0 shadow-sm">
+            <!-- SETUP TERAKHIR INTERAKTIF: SURAT KEMBALI KEPADA PEMILIKNYA (DIBIKIN TOMBOL / AMPLOP DULU) -->
+            <div class="w-full glass-card rounded-3xl p-6 border border-rose-200/80 shadow-xl relative text-left">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-500 text-white flex items-center justify-center text-xl shadow-md flex-shrink-0">
                         <i class="fas fa-feather-pointed"></i>
                     </div>
-                    <div>
-                        <h3 class="text-sm font-bold text-slate-800">Surat yang akhirnya kembali kepada pemiliknya</h3>
-                        <p class="text-[11px] text-rose-500 font-medium">Sebuah pengakuan dan ketulusan hati</p>
+                    <div class="text-left flex-grow">
+                        <h3 class="text-sm md:text-base font-bold text-slate-800">Surat yang akhirnya kembali kepada pemiliknya</h3>
+                        <p class="text-xs text-amber-600 font-medium">Sebuah pengakuan dan ketulusan hati</p>
                     </div>
                 </div>
-                
-                <div class="space-y-3 text-xs md:text-sm text-slate-600 leading-relaxed font-medium">
-                    <p>
-                        Lisa, di hari ulang tahunmu ini, lewat web kecil yang kubuat dengan sepenuh hati, ada satu hal lagi yang ingin kuutarakan. Surat ini akhirnya kembali pada pemiliknya—orang yang paling berhak mendengar kata maaf yang sudah terlalu lama tertahan.
-                    </p>
-                    <p>
-                        Aku tahu tidak ada kata maaf yang bisa mengulang waktu atau menghapus kesalahan yang pernah kubuat di masa lalu. Aku benar-benar menyesal atas setiap kebodohan, ego, dan kesalahan yang pernah menyakiti hatimu atau membuat keadaan menjadi buruk.
-                    </p>
-                    <p>
-                        Ribuan kata maaf mungkin tidak akan pernah cukup untuk menebus semuanya. Namun hari ini, dengan kerendahan hati yang paling dalam, aku ingin meminta maaf selulus-lulusnya. Terima kasih karena telah bertahan, dan semoga seiring bertambahnya usiamu, pintu maaf itu perlahan bisa terbuka.
-                    </p>
-                </div>
-
-                <div class="pt-2 text-right">
-                    <p class="font-handwriting text-2xl text-rose-600 font-bold">Azka Faza P.</p>
-                </div>
+                <button onclick="openApologyModal()" class="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-rose-500 text-white font-bold text-xs tracking-wide shadow-md hover:opacity-95 active:scale-98 transition flex items-center justify-center space-x-2">
+                    <i class="fas fa-key text-xs"></i>
+                    <span>Buka Surat Pengakuan 💌</span>
+                </button>
             </div>
 
             <!-- Footer Message -->
@@ -325,7 +313,7 @@
         </section>
     </main>
 
-    <!-- MODAL LETTER -->
+    <!-- MODAL 1: SURAT UCAPAN ULANG TAHUN -->
     <div id="letter-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
         <div class="glass-card w-full max-w-md rounded-3xl p-6 md:p-8 bg-white/95 border border-white shadow-2xl transform scale-90 transition-all duration-300 relative overflow-hidden max-h-[85vh] flex flex-col">
             <button onclick="closeLetterModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center text-xs transition">
@@ -348,6 +336,42 @@
             </div>
             <div class="pt-4 mt-4 border-t border-slate-100">
                 <button onclick="closeLetterModal()" class="w-full py-2.5 rounded-xl bg-rose-500 text-white font-bold text-xs shadow-md hover:bg-rose-600 active:scale-95 transition">
+                    Tutup Surat 💌
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: SURAT YANG AKHIRNYA KEMBALI KEPADA PEMILIKNYA (PERMINTAAN MAAF) -->
+    <div id="apology-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card w-full max-w-md rounded-3xl p-6 md:p-8 bg-white/95 border border-white shadow-2xl transform scale-90 transition-all duration-300 relative overflow-hidden max-h-[85vh] flex flex-col">
+            <button onclick="closeApologyModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center text-xs transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="flex items-center space-x-2 text-amber-600 mb-4">
+                <i class="fas fa-feather-pointed"></i>
+                <span class="text-xs font-bold tracking-widest uppercase">Sebuah Pengakuan & Ketulusan Hati</span>
+            </div>
+            <div class="overflow-y-auto pr-2 space-y-4 text-slate-700 text-sm leading-relaxed font-medium">
+                <h2 class="text-xl md:text-2xl font-bold text-slate-800 font-serif-title border-b pb-2 border-slate-100">
+                    Surat yang akhirnya kembali kepada pemiliknya
+                </h2>
+                <p>
+                    Lisa, di hari ulang tahunmu ini, lewat web kecil yang kubuat dengan sepenuh hati, ada satu hal lagi yang ingin kuutarakan. Surat ini akhirnya kembali pada pemiliknya—orang yang paling berhak mendengar kata maaf yang sudah terlalu lama tertahan.
+                </p>
+                <p>
+                    Aku tahu tidak ada kata maaf yang bisa mengulang waktu atau menghapus kesalahan yang pernah kubuat di masa lalu. Aku benar-benar menyesal atas setiap kebodohan, ego, dan kesalahan yang pernah menyakiti hatimu atau membuat keadaan menjadi buruk.
+                </p>
+                <p>
+                    Ribuan kata maaf mungkin tidak akan pernah cukup untuk menebus semuanya. Namun hari ini, dengan kerendahan hati yang paling dalam, aku ingin meminta maaf selulus-lulusnya. Terima kasih karena telah bertahan, dan semoga seiring bertambahnya usiamu, pintu maaf itu perlahan bisa terbuka.
+                </p>
+                <div class="pt-4 text-right">
+                    <p class="text-xs text-slate-400">Dengan tulus,</p>
+                    <p class="font-handwriting text-3xl text-rose-600 font-bold mt-1">Azka Faza P.</p>
+                </div>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-100">
+                <button onclick="closeApologyModal()" class="w-full py-2.5 rounded-xl bg-amber-500 text-white font-bold text-xs shadow-md hover:bg-amber-600 active:scale-95 transition">
                     Tutup Surat 💌
                 </button>
             </div>
@@ -415,7 +439,6 @@
             }
         });
 
-        // Tambahan khusus HP saat di-minimize / pindah aplikasi
         window.addEventListener('blur', () => {
             if (audioPlaying) {
                 pauseAudio();
@@ -431,7 +454,7 @@
         let candleBlown = false;
         function blowCandle() {
             const flame = document.getElementById('flame');
-           const blowText = document.getElementById('blow-text');
+            const blowText = document.getElementById('blow-text');
             if (!candleBlown) {
                 flame.style.opacity = '0';
                 flame.style.transform = 'scale(0)';
@@ -460,6 +483,7 @@
         function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }
         function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); }
 
+        /* CONTROLLER MODAL SURAT 1 (UCAPAN ULANG TAHUN) */
         function openLetterModal() {
             const modal = document.getElementById('letter-modal');
             modal.classList.remove('pointer-events-none', 'opacity-0');
@@ -469,6 +493,21 @@
 
         function closeLetterModal() {
             const modal = document.getElementById('letter-modal');
+            modal.children[0].classList.remove('scale-100');
+            modal.children[0].classList.add('scale-90');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        /* CONTROLLER MODAL SURAT 2 (SURAT KEMBALI KEPADA PEMILIKNYA) */
+        function openApologyModal() {
+            const modal = document.getElementById('apology-modal');
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+            modal.children[0].classList.remove('scale-90');
+            modal.children[0].classList.add('scale-100');
+        }
+
+        function closeApologyModal() {
+            const modal = document.getElementById('apology-modal');
             modal.children[0].classList.remove('scale-100');
             modal.children[0].classList.add('scale-90');
             modal.classList.add('opacity-0', 'pointer-events-none');
