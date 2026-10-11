@@ -408,9 +408,16 @@
             }
         }
 
-        /* AUTO PAUSE MUSIK SAAT KELUAR / PINDAH TAB BROWSER */
+        /* AUTO PAUSE MUSIK SAAT KELUAR / PINDAH TAB / MINIMIZE DI HP */
         document.addEventListener('visibilitychange', () => {
             if (document.hidden && audioPlaying) {
+                pauseAudio();
+            }
+        });
+
+        // Tambahan khusus HP saat di-minimize / pindah aplikasi
+        window.addEventListener('blur', () => {
+            if (audioPlaying) {
                 pauseAudio();
             }
         });
@@ -424,7 +431,7 @@
         let candleBlown = false;
         function blowCandle() {
             const flame = document.getElementById('flame');
-            const blowText = document.getElementById('blow-text');
+           const blowText = document.getElementById('blow-text');
             if (!candleBlown) {
                 flame.style.opacity = '0';
                 flame.style.transform = 'scale(0)';
