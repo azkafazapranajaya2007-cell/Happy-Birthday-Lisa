@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Lisa! 🎁✨</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .font-handwriting { font-family: 'Caveat', cursive; }
+        .font-serif-title { font-family: 'Playfair Display', serif; }
+        .bg-aesthetic-gradient {
+            background: linear-gradient(135deg, #FFF5F5 0%, #FED7AA 35%, #FBCFE8 70%, #E0E7FF 100%);
+            background-size: 300% 300%;
+            animation: gradientShift 12s ease infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .gift-box-container { perspective: 1000px; }
+        .gift-box {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+        }
+        .gift-box:hover { transform: translateY(-8px) rotateY(10deg); }
+        .gift-box-lid {
+            position: absolute;
+            top: -20px; left: -10px;
+            width: 160px; height: 40px;
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.3);
+            z-index: 10;
+            transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .gift-box-body {
+            position: absolute;
+            width: 140px; height: 120px;
+            background: linear-gradient(135deg, #fb7185, #f43f5e);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 15px 35px rgba(244, 63, 94, 0.35);
+            overflow: hidden;
+        }
+        .ribbon-v {
+            position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+            width: 30px; height: 100%;
+            background: linear-gradient(90deg, #fef08a, #fde047);
+        }
+        .ribbon-h {
+            position: absolute; top: 50%; left: 0; transform: translateY(-50%);
+            width: 100%; height: 30px;
+            background: linear-gradient(180deg, #fef08a, #fde047);
+        }
+        .bow {
+            position: absolute; top: -38px; left: 50%; transform: translateX(-50%);
+            width: 60px; height: 30px; z-index: 12;
+        }
+        .bow::before, .bow::after {
+            content: ''; position: absolute; width: 32px; height: 25px;
+            border: 4px solid #fde047; border-radius: 50% 50% 0 50%; background: #fef08a;
+        }
+        .bow::before { left: 0; transform: rotate(-20deg); }
+        .bow::after { right: 0; transform: rotate(20deg) scaleX(-1); }
+        .gift-box-opened .gift-box-lid { transform: translateY(-120px) rotate(-25deg) scale(0.9); opacity: 0; }
+        .gift-box-opened .gift-box-body { transform: translateY(150px); opacity: 0; transition: all 0.8s ease; }
+        .bar {
+            width: 3px; height: 12px; background-color: #f43f5e; border-radius: 3px;
+            animation: bounce 1.2s infinite ease-in-out;
+        }
+        .bar:nth-child(2) { animation-delay: 0.2s; }
+        .bar:nth-child(3) { animation-delay: 0.4s; }
+        .bar:nth-child(4) { animation-delay: 0.1s; }
+        @keyframes bounce {
+            0%, 100% { height: 6px; }
+            50% { height: 18px; }
+        }
+        .paused .bar { animation-play-state: paused; height: 4px !important; }
+        .floating-element {
+            position: fixed; pointer-events: none;
+            animation: floatUpAndFade 2.5s ease-out forwards;
+            z-index: 9999; font-size: 24px;
+        }
+        @keyframes floatUpAndFade {
+            0% { opacity: 1; transform: translateY(0) scale(0.8) rotate(0deg); }
+            50% { opacity: 0.9; transform: translateY(-80px) scale(1.2) rotate(15deg); }
+            100% { opacity: 0; transform: translateY(-160px) scale(0.6) rotate(-15deg); }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+        .flame { animation: flicker 0.8s infinite alternate; }
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+            100% { transform: scale(1.15) rotate(2deg); opacity: 1; filter: drop-shadow(0 0 8px #f59e0b); }
+        }
+    </style>
+</head>
+<body class="bg-aesthetic-gradient min-h-screen text-slate-800 flex flex-col justify-between overflow-x-hidden relative">
+    <div id="tap-container" class="fixed inset-0 z-0 pointer-events-auto"></div>
+    
+    <!-- Floating Music Player -->
+    <div id="music-player" class="fixed top-4 right-4 z-50 transition-all duration-500 transform translate-y-[-100px] opacity-0">
+        <div class="glass-card px-4 py-2.5 rounded-full flex items-center space-x-3 shadow-lg border border-white/60">
+            <button id="play-btn" onclick="toggleAudio()" class="w-9 h-9 rounded-full bg-rose-500 text-white flex items-center justify-center shadow-md hover:bg-rose-600 transition hover:scale-105 active:scale-95">
+                <i id="play-icon" class="fas fa-play text-xs pl-0.5"></i>
+            </button>
+            <div class="flex flex-col">
+                <span class="text-xs font-bold text-slate-800 leading-tight">About You</span>
+                <span class="text-[10px] text-rose-500 font-semibold tracking-wide">The 1975</span>
+            </div>
+            <div id="equalizer" class="flex items-center space-x-1 pl-1 paused">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Element pointing to local asset -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="assets/audio/about-you.mp3" type="audio/mpeg">
+    </audio>
+
+    <main class="relative z-10 flex-grow flex flex-col items-center justify-center p-4 md:p-8 max-w-lg mx-auto w-full">
+        
+        <!-- STEP 1: UNBOXING -->
+        <section id="unboxing-section" class="flex flex-col items-center justify-center min-h-[85vh] text-center w-full transition-all duration-700">
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/80 border border-rose-200 shadow-sm text-rose-600 text-xs font-bold tracking-wider uppercase mb-6 animate-bounce">
+                <i class="fas fa-sparkles text-amber-400"></i>
+                <span>13 October • Special Birthday</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 tracking-tight mb-2">
+                Special Delivery 💌
+            </h1>
+            <p class="text-slate-600 text-sm max-w-xs mb-10 font-medium">
+                Ada kado manis buat kamu hari ini. Coba ketuk kadonya buat buka pesannya!
+            </p>
+            
+            <div class="gift-box-container my-4" onclick="openGiftBox()">
+                <div id="gift-box" class="gift-box">
+                    <div class="bow"></div>
+                    <div class="gift-box-lid"><div class="ribbon-v"></div></div>
+                    <div class="gift-box-body"><div class="ribbon-v"></div><div class="ribbon-h"></div></div>
+                </div>
+            </div>
+
+            <button onclick="openGiftBox()" class="mt-12 px-6 py-3 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold text-sm shadow-lg shadow-rose-500/30 hover:shadow-rose-500/50 hover:scale-105 active:scale-95 transition-all flex items-center space-x-2">
+                <i class="fas fa-hand-pointer text-xs"></i>
+                <span>Ketuk Untuk Buka Kado 🎁</span>
+            </button>
+            <p class="text-xs text-slate-400 mt-6 font-medium">
+                Dibuat khusus untuk <span class="text-rose-500 font-bold">Alisyah Fitriyani (Lisa)</span>
+            </p>
+        </section>
+
+        <!-- STEP 2: DASHBOARD -->
+        <section id="birthday-content" class="hidden opacity-0 transform translate-y-10 transition-all duration-1000 w-full flex flex-col items-center space-y-8 pt-6 pb-12">
+            
+            <div class="w-full glass-card rounded-3xl p-6 text-center relative overflow-hidden border border-white/80 shadow-xl">
+                <div class="inline-block p-3 bg-rose-100 rounded-2xl text-rose-500 mb-3">
+                    <i class="fas fa-cake-candles text-2xl"></i>
+                </div>
+                <h2 class="text-xs font-extrabold uppercase tracking-widest text-rose-500 mb-1">Happy Birthday • 13 October</h2>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 font-serif-title mb-2">
+                    Alisyah Fitriyani <span class="text-rose-500">✨</span>
+                </h1>
+                <p class="text-xs text-slate-500 font-medium max-w-xs mx-auto">
+                    Selamat ulang tahun yang ke-19, <span class="text-rose-600 font-bold">Lisa</span>! Semoga hari ini penuh tawa, kebahagiaan, dan semua impian indahmu terwujud. 🎉
+                </p>
+                
+                <div class="mt-6 pt-5 border-t border-rose-100/80 flex flex-col items-center">
+                    <div id="cake-container" class="relative my-2">
+                        <div id="flame" class="flame w-4 h-6 bg-gradient-to-t from-amber-500 via-yellow-400 to-white rounded-full mx-auto -mb-1 shadow-lg shadow-amber-300"></div>
+                        <div class="w-3 h-8 bg-gradient-to-r from-pink-300 to-rose-400 rounded-t-sm mx-auto shadow-sm"></div>
+                        <div class="w-16 h-8 bg-amber-100 border-t-4 border-rose-400 rounded-b-xl mx-auto flex items-center justify-center text-[10px] text-amber-800 font-bold shadow-sm">
+                            🎂 13 Oct
+                        </div>
+                    </div>
+                    <button id="blow-btn" onclick="blowCandle()" class="mt-2 px-4 py-1.5 rounded-full bg-rose-100 text-rose-600 font-bold text-xs hover:bg-rose-200 transition flex items-center space-x-1.5">
+                        <i class="fas fa-wind text-xs"></i>
+                        <span id="blow-text">Tiup Lilinnya ✨</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="w-full glass-card rounded-3xl p-6 text-center border border-white/80 shadow-xl relative">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-500 text-white flex items-center justify-center text-xl shadow-md flex-shrink-0">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <div class="text-left flex-grow">
+                        <h3 class="text-base font-bold text-slate-800">Surat Khusus Buat Lisa 💌</h3>
+                        <p class="text-xs text-slate-500">Ada pesan hangat dari Azka Faza P.</p>
+                    </div>
+                </div>
+                <button onclick="openLetterModal()" class="w-full mt-4 py-3 rounded-xl bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold text-xs tracking-wide shadow-md hover:opacity-95 active:scale-98 transition flex items-center justify-center space-x-2">
+                    <span>Baca Surat Ucapan</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+
+            <!-- Memory Lane with Lisa's Actual Photos -->
+            <div class="w-full glass-card rounded-3xl p-6 border border-white/80 shadow-xl">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-800">Memory Lane 📸</h3>
+                        <p class="text-xs text-slate-500">Kenangan indah dan senyuman Lisa</p>
+                    </div>
+                    <span class="text-xs bg-rose-100 text-rose-600 px-2.5 py-1 rounded-full font-bold">Galeri</span>
+                </div>
+                
+                <div class="relative w-full overflow-hidden rounded-2xl bg-slate-100 p-3 border border-slate-200/60 shadow-inner">
+                    <div id="carousel-track" class="flex transition-transform duration-500 ease-out">
+                        
+                        <!-- Photo 1 -->
+                        <div class="w-full flex-shrink-0 p-2">
+                            <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center">
+                                <div class="w-full h-64 rounded-lg overflow-hidden bg-rose-50 relative">
+                                    <img src="assets/img/lisa1.jpeg" alt="Lisa Memory 1" class="w-full h-full object-cover">
+                                </div>
+                                <p class="font-handwriting text-xl text-slate-700 mt-3 font-semibold">Keep smiling and shine bright ✨</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Photo 2 -->
+                        <div class="w-full flex-shrink-0 p-2">
+                            <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center">
+                                <div class="w-full h-64 rounded-lg overflow-hidden bg-rose-50 relative">
+                                    <img src="assets/img/lisa2.jpeg" alt="Lisa Memory 2" class="w-full h-full object-cover">
+                                </div>
+                                <p class="font-handwriting text-xl text-slate-700 mt-3 font-semibold">Semoga harimu selalu hangat 🌸</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Photo 3 -->
+                        <div class="w-full flex-shrink-0 p-2">
+                            <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center">
+                                <div class="w-full h-64 rounded-lg overflow-hidden bg-rose-50 relative">
+                                    <img src="assets/img/lisa3.jpeg" alt="Lisa Memory 3" class="w-full h-full object-cover">
+                                </div>
+                                <p class="font-handwriting text-xl text-slate-700 mt-3 font-semibold">Bahagia terus ya di usia baru! 🎉</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow-md text-slate-700 flex items-center justify-center text-xs hover:bg-white active:scale-90 transition">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow-md text-slate-700 flex items-center justify-center text-xs hover:bg-white active:scale-90 transition">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="flex justify-center space-x-1.5 mt-3">
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-rose-500 transition-all"></span>
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-rose-200 transition-all"></span>
+                    <span class="carousel-dot w-2 h-2 rounded-full bg-rose-200 transition-all"></span>
+                </div>
+            </div>
+
+            <footer class="text-center pt-4 pb-2">
+                <p class="text-xs text-slate-400 font-medium">
+                    Made with ❤️ by <span class="text-rose-500 font-semibold">Azka Faza P.</span> for Alisyah Fitriyani
+                </p>
+                <p class="text-[10px] text-slate-400 mt-1">🎵 Background music: The 1975 - About You</p>
+            </footer>
+        </section>
+    </main>
+
+    <!-- MODAL LETTER -->
+    <div id="letter-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card w-full max-w-md rounded-3xl p-6 md:p-8 bg-white/95 border border-white shadow-2xl transform scale-90 transition-all duration-300 relative overflow-hidden max-h-[85vh] flex flex-col">
+            <button onclick="closeLetterModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center text-xs transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="flex items-center space-x-2 text-rose-500 mb-4">
+                <i class="fas fa-heart"></i>
+                <span class="text-xs font-bold tracking-widest uppercase">To: Alisyah Fitriyani (Lisa)</span>
+            </div>
+            <div class="overflow-y-auto pr-2 space-y-4 text-slate-700 text-sm leading-relaxed font-medium">
+                <h2 class="text-2xl font-bold text-slate-800 font-serif-title">Happy Birthday, Lisa! 🎈</h2>
+                <p>Hai Lisa, selamat ulang tahun ya yang ke-19 pada 13 Oktober ini! 🎉</p>
+                <p>Hari ini adalah hari yang spesial banget buat kamu. Terima kasih udah jadi sosok yang luar biasa, selalu bawa energi positif, dan bikin orang-orang di sekitar kamu merasa nyaman.</p>
+                <p>Di usia yang baru ini, semoga kamu selalu diberikan kesehatan, kelancaran di setiap urusan, tawa yang ngga pernah habis, dan keberanian buat raih semua hal yang kamu impikan.</p>
+                <p class="font-handwriting text-2xl text-rose-600 font-bold pt-2">Stay happy, stay healthy, and keep shining bright! ✨💖</p>
+                <div class="pt-4 text-right">
+                    <p class="text-xs text-slate-400">From someone special,</p>
+                    <p class="font-handwriting text-3xl text-rose-600 font-bold mt-1">Azka Faza P.</p>
+                </div>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-100">
+                <button onclick="closeLetterModal()" class="w-full py-2.5 rounded-xl bg-rose-500 text-white font-bold text-xs shadow-md hover:bg-rose-600 active:scale-95 transition">
+                    Tutup Surat 💌
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let audioPlaying = false;
+        const bgMusic = document.getElementById('bg-music');
+        const playBtn = document.getElementById('play-btn');
+        const playIcon = document.getElementById('play-icon');
+        const equalizer = document.getElementById('equalizer');
+        const musicPlayer = document.getElementById('music-player');
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        function openGiftBox() {
+            document.getElementById('gift-box').parentElement.classList.add('gift-box-opened');
+            triggerConfetti();
+            playAudio();
+            musicPlayer.classList.remove('translate-y-[-100px]', 'opacity-0');
+            setTimeout(() => {
+                document.getElementById('unboxing-section').classList.add('hidden');
+                const content = document.getElementById('birthday-content');
+                content.classList.remove('hidden');
+                setTimeout(() => content.classList.remove('opacity-0', 'translate-y-10'), 50);
+                setTimeout(triggerConfetti, 300);
+            }, 800);
+        }
+
+        function triggerConfetti() {
+            if (typeof confetti === 'function') {
+                confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+            }
+        }
+
+        function playAudio() {
+            bgMusic.play().then(() => {
+                audioPlaying = true;
+                playIcon.className = 'fas fa-pause text-xs';
+                equalizer.classList.remove('paused');
+            }).catch(err => console.log("Autoplay restricted"));
+        }
+
+        function toggleAudio() {
+            if (audioPlaying) {
+                bgMusic.pause();
+                audioPlaying = false;
+                playIcon.className = 'fas fa-play text-xs pl-0.5';
+                equalizer.classList.add('paused');
+            } else {
+                playAudio();
+            }
+        }
+
+        let candleBlown = false;
+        function blowCandle() {
+            const flame = document.getElementById('flame');
+            const blowText = document.getElementById('blow-text');
+            if (!candleBlown) {
+                flame.style.opacity = '0';
+                flame.style.transform = 'scale(0)';
+                blowText.innerText = 'Lilin TerTiup! Make a Wish ✨';
+                candleBlown = true;
+                triggerConfetti();
+            } else {
+                flame.style.opacity = '1';
+                flame.style.transform = 'scale(1)';
+                blowText.innerText = 'Tiup Lilinnya ✨';
+                candleBlown = false;
+            }
+        }
+
+        function updateCarousel() {
+            const track = document.getElementById('carousel-track');
+            const dots = document.querySelectorAll('.carousel-dot');
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.className = index === currentSlide ? 'carousel-dot w-5 h-2 rounded-full bg-rose-500 transition-all' : 'carousel-dot w-2 h-2 rounded-full bg-rose-200 transition-all';
+            });
+        }
+
+        function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateCarousel(); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateCarousel(); }
+
+        function openLetterModal() {
+            const modal = document.getElementById('letter-modal');
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+            modal.children[0].classList.remove('scale-90');
+            modal.children[0].classList.add('scale-100');
+        }
+
+        function closeLetterModal() {
+            const modal = document.getElementById('letter-modal');
+            modal.children[0].classList.remove('scale-100');
+            modal.children[0].classList.add('scale-90');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target.closest('button') || e.target.closest('a') || e.target.closest('.gift-box')) return;
+            const el = document.createElement('div');
+            el.className = 'floating-element';
+            const icons = ['💖', '🎈', '✨', '🌸', '🎁'];
+            el.innerText = icons[Math.floor(Math.random() * icons.length)];
+            el.style.left = `${e.clientX}px`;
+            el.style.top = `${e.clientY - 10}px`;
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 2500);
+        });
+    </script>
+</body>
+</html>
