@@ -107,7 +107,7 @@
             100% { opacity: 0; transform: translateY(-160px) scale(0.6) rotate(-15deg); }
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.6);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
@@ -141,14 +141,14 @@
         </div>
     </div>
 
-    <!-- Audio Element pointing to local asset -->
+    <!-- Audio Element -->
     <audio id="bg-music" loop preload="auto">
         <source src="assets/audio/about-you.mp3" type="audio/mpeg">
     </audio>
 
     <main class="relative z-10 flex-grow flex flex-col items-center justify-center p-4 md:p-8 max-w-lg mx-auto w-full">
         
-        <!-- STEP 1: UNBOXING -->
+        <!-- STEP 1: UNBOXING LANDING SCREEN -->
         <section id="unboxing-section" class="flex flex-col items-center justify-center min-h-[85vh] text-center w-full transition-all duration-700">
             <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/80 border border-rose-200 shadow-sm text-rose-600 text-xs font-bold tracking-wider uppercase mb-6 animate-bounce">
                 <i class="fas fa-sparkles text-amber-400"></i>
@@ -178,9 +178,10 @@
             </p>
         </section>
 
-        <!-- STEP 2: DASHBOARD -->
+        <!-- STEP 2: MAIN DASHBOARD -->
         <section id="birthday-content" class="hidden opacity-0 transform translate-y-10 transition-all duration-1000 w-full flex flex-col items-center space-y-8 pt-6 pb-12">
             
+            <!-- Header Card -->
             <div class="w-full glass-card rounded-3xl p-6 text-center relative overflow-hidden border border-white/80 shadow-xl">
                 <div class="inline-block p-3 bg-rose-100 rounded-2xl text-rose-500 mb-3">
                     <i class="fas fa-cake-candles text-2xl"></i>
@@ -208,6 +209,7 @@
                 </div>
             </div>
 
+            <!-- Letter Trigger -->
             <div class="w-full glass-card rounded-3xl p-6 text-center border border-white/80 shadow-xl relative">
                 <div class="flex items-center space-x-4">
                     <div class="w-12 h-12 rounded-2xl bg-rose-500 text-white flex items-center justify-center text-xl shadow-md flex-shrink-0">
@@ -224,7 +226,7 @@
                 </button>
             </div>
 
-            <!-- Memory Lane with Lisa's Actual Photos -->
+            <!-- Memory Lane Carousel (Gambar Disesuaikan Biar Ngga Kepotong) -->
             <div class="w-full glass-card rounded-3xl p-6 border border-white/80 shadow-xl">
                 <div class="flex items-center justify-between mb-4">
                     <div>
@@ -234,34 +236,34 @@
                     <span class="text-xs bg-rose-100 text-rose-600 px-2.5 py-1 rounded-full font-bold">Galeri</span>
                 </div>
                 
-                <div class="relative w-full overflow-hidden rounded-2xl bg-slate-100 p-3 border border-slate-200/60 shadow-inner">
+                <div class="relative w-full overflow-hidden rounded-2xl bg-slate-100 p-2 border border-slate-200/60 shadow-inner">
                     <div id="carousel-track" class="flex transition-transform duration-500 ease-out">
                         
-                        <!-- Photo 1 -->
-                        <div class="w-full flex-shrink-0 p-2">
+                        <!-- Photo Card 1 -->
+                        <div class="w-full flex-shrink-0 p-1">
                             <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center">
-                                <div class="w-full h-64 rounded-lg overflow-hidden bg-rose-50 relative">
-                                    <img src="assets/img/lisa1.jpeg" alt="Lisa Memory 1" class="w-full h-full object-cover">
+                                <div class="w-full h-80 sm:h-[360px] rounded-lg overflow-hidden bg-rose-50/50 flex items-center justify-center relative">
+                                    <img src="assets/img/lisa1.jpeg" alt="Lisa Memory 1" class="w-full h-full object-contain">
                                 </div>
                                 <p class="font-handwriting text-xl text-slate-700 mt-3 font-semibold">Keep smiling and shine bright ✨</p>
                             </div>
                         </div>
                         
-                        <!-- Photo 2 -->
-                        <div class="w-full flex-shrink-0 p-2">
+                        <!-- Photo Card 2 -->
+                        <div class="w-full flex-shrink-0 p-1">
                             <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center">
-                                <div class="w-full h-64 rounded-lg overflow-hidden bg-rose-50 relative">
-                                    <img src="assets/img/lisa2.jpeg" alt="Lisa Memory 2" class="w-full h-full object-cover">
+                                <div class="w-full h-80 sm:h-[360px] rounded-lg overflow-hidden bg-rose-50/50 flex items-center justify-center relative">
+                                    <img src="assets/img/lisa2.jpeg" alt="Lisa Memory 2" class="w-full h-full object-contain">
                                 </div>
                                 <p class="font-handwriting text-xl text-slate-700 mt-3 font-semibold">Semoga harimu selalu hangat 🌸</p>
                             </div>
                         </div>
                         
-                        <!-- Photo 3 -->
-                        <div class="w-full flex-shrink-0 p-2">
+                        <!-- Photo Card 3 -->
+                        <div class="w-full flex-shrink-0 p-1">
                             <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex flex-col items-center">
-                                <div class="w-full h-64 rounded-lg overflow-hidden bg-rose-50 relative">
-                                    <img src="assets/img/lisa3.jpeg" alt="Lisa Memory 3" class="w-full h-full object-cover">
+                                <div class="w-full h-80 sm:h-[360px] rounded-lg overflow-hidden bg-rose-50/50 flex items-center justify-center relative">
+                                    <img src="assets/img/lisa3.jpeg" alt="Lisa Memory 3" class="w-full h-full object-contain">
                                 </div>
                                 <p class="font-handwriting text-xl text-slate-700 mt-3 font-semibold">Bahagia terus ya di usia baru! 🎉</p>
                             </div>
@@ -269,21 +271,24 @@
 
                     </div>
 
-                    <button onclick="prevSlide()" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow-md text-slate-700 flex items-center justify-center text-xs hover:bg-white active:scale-90 transition">
+                    <!-- Carousel Controls -->
+                    <button onclick="prevSlide()" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 shadow-md text-slate-700 flex items-center justify-center text-xs hover:bg-white active:scale-90 transition z-10">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button onclick="nextSlide()" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 shadow-md text-slate-700 flex items-center justify-center text-xs hover:bg-white active:scale-90 transition">
+                    <button onclick="nextSlide()" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 shadow-md text-slate-700 flex items-center justify-center text-xs hover:bg-white active:scale-90 transition z-10">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
 
+                <!-- Carousel Dots Indicator -->
                 <div class="flex justify-center space-x-1.5 mt-3">
-                    <span class="carousel-dot w-2 h-2 rounded-full bg-rose-500 transition-all"></span>
+                    <span class="carousel-dot w-5 h-2 rounded-full bg-rose-500 transition-all"></span>
                     <span class="carousel-dot w-2 h-2 rounded-full bg-rose-200 transition-all"></span>
                     <span class="carousel-dot w-2 h-2 rounded-full bg-rose-200 transition-all"></span>
                 </div>
             </div>
 
+            <!-- Footer Message -->
             <footer class="text-center pt-4 pb-2">
                 <p class="text-xs text-slate-400 font-medium">
                     Made with ❤️ by <span class="text-rose-500 font-semibold">Azka Faza P.</span> for Alisyah Fitriyani
@@ -322,6 +327,7 @@
         </div>
     </div>
 
+    <!-- JavaScript logic -->
     <script>
         let audioPlaying = false;
         const bgMusic = document.getElementById('bg-music');
@@ -357,19 +363,36 @@
                 audioPlaying = true;
                 playIcon.className = 'fas fa-pause text-xs';
                 equalizer.classList.remove('paused');
-            }).catch(err => console.log("Autoplay restricted"));
+            }).catch(err => console.log("Autoplay blocked by browser policy"));
+        }
+
+        function pauseAudio() {
+            bgMusic.pause();
+            audioPlaying = false;
+            playIcon.className = 'fas fa-play text-xs pl-0.5';
+            equalizer.classList.add('paused');
         }
 
         function toggleAudio() {
             if (audioPlaying) {
-                bgMusic.pause();
-                audioPlaying = false;
-                playIcon.className = 'fas fa-play text-xs pl-0.5';
-                equalizer.classList.add('paused');
+                pauseAudio();
             } else {
                 playAudio();
             }
         }
+
+        /* AUTO PAUSE MUSIK SAAT KELUAR / PINDAH TAB BROWSER */
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && audioPlaying) {
+                pauseAudio();
+            }
+        });
+
+        window.addEventListener('pagehide', () => {
+            if (audioPlaying) {
+                pauseAudio();
+            }
+        });
 
         let candleBlown = false;
         function blowCandle() {
@@ -394,7 +417,9 @@
             const dots = document.querySelectorAll('.carousel-dot');
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
             dots.forEach((dot, index) => {
-                dot.className = index === currentSlide ? 'carousel-dot w-5 h-2 rounded-full bg-rose-500 transition-all' : 'carousel-dot w-2 h-2 rounded-full bg-rose-200 transition-all';
+                dot.className = index === currentSlide 
+                    ? 'carousel-dot w-5 h-2 rounded-full bg-rose-500 transition-all' 
+                    : 'carousel-dot w-2 h-2 rounded-full bg-rose-200 transition-all';
             });
         }
 
